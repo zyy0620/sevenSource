@@ -13,7 +13,7 @@
     <meta name="HandheldFriendly" content="true" />
     <meta name="x5-page-mode" content="app" />
     <meta name="Viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
-    <link rel="stylesheet" href="DPlayer.min.css">
+    <link rel="stylesheet" href="./css/DPlayer.min.css">
     <style type="text/css">
         body,
         html {
@@ -56,17 +56,17 @@
         document.oncontextmenu = new Function("event.returnValue=false");
         document.onselectstart = new Function("event.returnValue=false");
     </script>
-    <script src="cdnbye@latest.js"></script>
-    <script src="dplayer.min.js"></script>
+    <script src="./js/cdnbye@latest.js"></script>
+    <script src="./js/dplayer.min.js"></script>
     <script>
 
        function GetQueryString(a) {
-            var b = new RegExp("(^|&)" + a + "=([^&]*)(&|$)", "i");
-            var r = window.location.search.substr(1).match(b);
-            if (r != null) return (r[2]);
-            return null
-            }
-        var urls = GetQueryString('url');
+    var b = new RegExp("(^|&)" + a + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(b);
+    if (r != null) return (r[2]);
+    return null
+}
+var urls = GetQueryString('url');
         var _peerId = '', _peerNum = 0, _totalP2PDownloaded = 0, _totalP2PUploaded = 0;
         var dp = new DPlayer({
             autoplay: true,
@@ -78,7 +78,7 @@
             video: {
                 url: urls,
                 type: 'customHls',
-                pic: 'https://ae01.alicdn.com/kf/H356e71c0fc3d4a5295dc585d9959684d4.jpg',           // 视频封面
+                pic: 'https://ae01.alicdn.com/kf/H356e71c0fc3d4a5295dc585d9959684d4.jpg',
                 customType: {
                     'customHls': function (video, player) {
                         const hls = new Hls({
@@ -86,7 +86,7 @@
                             // Other hlsjsConfig options provided by hls.js
                             p2pConfig: {
                                 logLevel: false,
-                                live: true,        // 如果是直播设为true
+                                live: true,        
                                 // Other p2pConfig options provided by CDNBye
                                 getStats: function (totalP2PDownloaded, totalP2PUploaded, totalHTTPDownloaded) {
                                     // console.warn(`totalP2PDownloaded ${totalP2PDownloaded} totalHTTPDownloaded ${totalHTTPDownloaded}`);

@@ -61,28 +61,13 @@
     <script>
 
        function GetQueryString(a) {
-    var b = new RegExp("(^|&)" + a + "=([^&]*)(&|$)", "i");
-    var r = window.location.search.substr(1).match(b);
-    if (r != null) return (r[2]);
-    return null
-}
-var urls = GetQueryString('url');
-        // var webdata = {
-        //     set: function (key, val) {
-        //         window.sessionStorage.setItem(key, val);
-        //     },
-        //     get: function (key) {
-        //         return window.sessionStorage.getItem(key);
-        //     },
-        //     del: function (key) {
-        //         window.sessionStorage.removeItem(key);
-        //     },
-        //     clear: function (key) {
-        //         window.sessionStorage.clear();
-        //     }
-        // };
+            var b = new RegExp("(^|&)" + a + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(b);
+            if (r != null) return (r[2]);
+            return null
+            }
+        var urls = GetQueryString('url');
         var _peerId = '', _peerNum = 0, _totalP2PDownloaded = 0, _totalP2PUploaded = 0;
-        // let Url = URL.createObjectURL("https://vod1.bdzybf1.com/20200813/uNqvsBhl/index.m3u8");
         var dp = new DPlayer({
             autoplay: true,
             container: document.getElementById('dplayer'),
@@ -124,20 +109,6 @@ var urls = GetQueryString('url');
                 }
             },
         });
-        // dp.seek(webdata.get('pay' + dp.video.url));
-        // setInterval(function () {
-        //     webdata.set('pay' +  dp.video.url, dp.video.currentTime);
-        // }, 1000);
-        // dp.on('ended', function () {
-        //     if (parent.MacPlayer.PlayLinkNext != '') {
-        //         top.location.href = parent.MacPlayer.PlayLinkNext;
-        //     }
-        // });
-        // function updateStats() {
-        //     var text = 'P2P已开启 共享' + (_totalP2PUploaded / 1024).toFixed(2) + 'MB' + ' 已加速' + (_totalP2PDownloaded / 1024).toFixed(2)
-        //         + 'MB' + ' 此片有 ' + _peerNum + ' 位影迷正在观看';
-        //     document.getElementById('stats').innerText = text
-        // }
     </script>
 </body>
 

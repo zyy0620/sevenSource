@@ -109,6 +109,29 @@ var urls = GetQueryString('url');
                 }
             },
         });
+        dp.on('loadeddata', function() {
+        cookie.get(urls) ? dp.seek(cookie.get(urls)) : dp.notice("视频已就绪");
+        dp.on('timeupdate', function() {
+            if (cookie) cookie.set(urls, dp.video.currentTime, 30)
+        })
+    });
+    var cookie = {
+        'set': function(a, b, c) {
+            var d = new Date();
+            d.setTime(d.getTime() + c * 24 * 60 * 60 * 1000);
+            var e = document.cookie.match(new RegExp('(^| )' + a + '=([^;]*)(;|$)'));
+            document.cookie = a + '=' + escape(b) + ';path=/;expires=' + d.toUTCString()
+        },
+        'get': function(a) {
+            var b = document.cookie.match(new RegExp('(^| )' + a + '=([^;]*)(;|$)'));
+            if (b != null) return unescape(b[2])
+        },
+        'put': function(a) {
+            var b = a.replace(/[^a-z]+/ig, '');
+            var b = b.substring(b.length - 32);
+            return b
+        }
+    }
     </script>
 </body>
 
